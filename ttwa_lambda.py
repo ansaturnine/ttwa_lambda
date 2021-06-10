@@ -128,7 +128,7 @@ def insert_into_db(tickets):
         conn.commit()
     curr.close()
     conn.close()
-    return
+    
 
 def write_csv(output_file, tickets):
     print("Writing csv...")
@@ -139,7 +139,7 @@ def write_csv(output_file, tickets):
         for i in range(len(tickets)):
             row = [tickets[i].ticket_id, tickets[i].customer_id, tickets[i].customer_name, tickets[i].current_status, tickets[i].ttwa_urgent, tickets[i].sla_urgent, tickets[i].sl_urgent, tickets[i].ttwa_high, tickets[i].sla_high, tickets[i].sl_high, tickets[i].ttwa_medium, tickets[i].sla_medium, tickets[i].sl_medium, tickets[i].ttwa_low, tickets[i].sla_low, tickets[i].sl_low, tickets[i].bizcrit_lost_reason, tickets[i].invalid_bizcrit, tickets[i].invalid_bizcrit_reason, tickets[i].resolved_last_datetime, tickets[i].created_datetime]
             writer.writerow(row)
-    return
+    
 
 def send_email(attachment_file):
     print("Composing the email...")
@@ -201,4 +201,3 @@ def lambda_handler(event, context):
         print("Data proccessing completed successfully. Removing files...")
         s3.rm(input_file)
         s3.rm(output_path)
-    return
